@@ -63,7 +63,6 @@ logging:
   - 81f
   - rpd
   - x0-form
-  - 32gpu
   enabled: true
 eval:
   enabled: true

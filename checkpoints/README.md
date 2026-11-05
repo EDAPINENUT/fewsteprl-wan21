@@ -23,23 +23,23 @@ weights to non-commercial use.
 ## Training-reward evaluation (256 held-out prompts, iteration 250; paper Tab. 8)
 
 `dataset/wan_dancegrpo/test.txt`, 4-step flow map, 81 frames, 480x832, seed
-12345, logged inside training. `mean` is the logged sum of the four rewards
+12345. `mean` is the sum of the four rewards
 with MQ / TA as z-scores. MQ / TA below are converted back to the raw scale
 with VideoReward's own statistics (`raw = z * std + mean`; MQ 1.1646 / 1.3811,
 TA 2.8105 / 2.5121, from `inference_config` in
 `models/VideoReward/model_config.json`). This is the
 training objective, so it does not separate quality gains from reward hacking.
 
-| trial | trainer | mean | HPSv3-G | HPSv3-P | MQ (raw) | TA (raw) | source run |
-|---|---|---|---|---|---|---|---|
-| step 0 (AnyFlow, pre-RL) | -- | 16.54 | 6.42 | 9.43 | 2.64 | 1.85 | |
-| meanflownft | `meanflow_nft` | 16.80 | 6.53 | 9.51 | 2.76 | 1.80 | `wan_rpd_mfnft_32gpu/20260921_203542` |
-| dmdnft | `dmdnft_rl` | 17.93 | 7.01 | 10.01 | 3.06 | 1.68 | `wan_dmdnft_32gpu/20260925_151719` |
-| dmdawm | `dmdawm_rl` | 16.78 | 6.51 | 9.53 | 2.74 | 1.82 | `wan_dmdawm_nocd_32gpu/20261008_212312` |
-| fewstepgrpo | `meanflowgrpo_rl` | 15.89 | 6.24 | 9.38 | 2.40 | 1.23 | `wan_grpo_32gpu/20260928_150048` |
-| meanflowawm | `meanflowawm_rl` | 16.66 | 6.49 | 9.46 | 2.68 | 1.84 | `wan_awm_32gpu/20260924_205834` |
-| meanflowopsd | `meanflowopsd_rl` | 16.26 | 6.30 | 9.32 | 2.54 | 1.91 | `wan_opsd_v_32gpu/20261007_163726` |
-| reflmx | `meanflowrefl_rl` | 16.46 | 6.39 | 9.38 | 2.61 | 1.89 | `wan_reflmx_32gpu/20261005_234849` |
+| trial | trainer | mean | HPSv3-G | HPSv3-P | MQ (raw) | TA (raw) |
+|---|---|---|---|---|---|---|
+| step 0 (AnyFlow, pre-RL) | -- | 16.54 | 6.42 | 9.43 | 2.64 | 1.85 |
+| meanflownft | `meanflow_nft` | 16.80 | 6.53 | 9.51 | 2.76 | 1.80 |
+| dmdnft | `dmdnft_rl` | 17.93 | 7.01 | 10.01 | 3.06 | 1.68 |
+| dmdawm | `dmdawm_rl` | 16.78 | 6.51 | 9.53 | 2.74 | 1.82 |
+| fewstepgrpo | `meanflowgrpo_rl` | 15.89 | 6.24 | 9.38 | 2.40 | 1.23 |
+| meanflowawm | `meanflowawm_rl` | 16.66 | 6.49 | 9.46 | 2.68 | 1.84 |
+| meanflowopsd | `meanflowopsd_rl` | 16.26 | 6.30 | 9.32 | 2.54 | 1.91 |
+| reflmx | `meanflowrefl_rl` | 16.46 | 6.39 | 9.38 | 2.61 | 1.89 |
 
 ## VBench (held out, checkpoint-250; paper Tab. 8 and Tab. S2)
 
@@ -73,10 +73,5 @@ highest training reward and the lowest VBench overall and `dynamic_degree`;
   from a joint decode by 79.2 degrees on average, so these two rows do not use
   the gradient of the full reward (paper App. D.5). The reported reward values
   use the full four-term scorer and are unaffected.
-- `dmdnft` was trained in two legs (0-50, then resumed to 250); its
-  `config.yaml` is the second leg's with `train.resume_from` cleared.
-- GPU counts as in the paper (Tab. 8): 32 for the five group-advantage trials,
-  48 for `meanflowopsd` and `reflmx`, with the same per-rank batch, so the
-  48-GPU runs use 1.5x as many rollouts per iteration (3072 vs. 2048).
 
 `SHA256SUMS` lists every weight file in this directory.

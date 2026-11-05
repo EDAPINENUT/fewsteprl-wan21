@@ -126,7 +126,7 @@ distributed:
   ddp_find_unused_parameters: null
 logging:
   project: fewsteprl-wan21
-  run_name: wan-reflmx-48gpu
+  run_name: reflmx
   entity: ''
   tags:
   - wan2.1
@@ -139,7 +139,6 @@ logging:
   - opsd
   - differentiable-reward
   - x0-form
-  - 32gpu
   enabled: true
 eval:
   enabled: true

@@ -65,7 +65,6 @@ logging:
   - opsd
   - differentiable-reward
   - x0-form
-  - 48gpu
   enabled: true
 eval:
   enabled: true

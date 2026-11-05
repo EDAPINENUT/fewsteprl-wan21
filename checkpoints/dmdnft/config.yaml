@@ -107,7 +107,7 @@ distributed:
   ddp_find_unused_parameters: null
 logging:
   project: fewsteprl-wan21
-  run_name: wan-dmdnft-32gpu
+  run_name: dmdnft
   entity: ''
   tags:
   - wan2.1
@@ -120,7 +120,6 @@ logging:
   - dmdnft
   - variant-c
   - x0-form
-  - 32gpu
   enabled: true
 eval:
   enabled: true

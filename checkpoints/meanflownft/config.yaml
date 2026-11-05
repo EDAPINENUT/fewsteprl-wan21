@@ -91,7 +91,7 @@ distributed:
   ddp_find_unused_parameters: null
 logging:
   project: fewsteprl-wan21
-  run_name: wan-rpd-mfnft-32gpu-advfix
+  run_name: meanflownft
   entity: ''
   tags:
   - wan2.1
@@ -102,7 +102,6 @@ logging:
   - 81f
   - rpd
   - x0-form
-  - 32gpu
   enabled: true
 eval:
   enabled: true

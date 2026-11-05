@@ -72,7 +72,6 @@ logging:
   - dmdnft
   - variant-c
   - x0-form
-  - 32gpu
   enabled: true
 eval:
   enabled: true

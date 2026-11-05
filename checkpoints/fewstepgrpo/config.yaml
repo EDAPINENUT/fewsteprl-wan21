@@ -108,7 +108,7 @@ distributed:
   ddp_find_unused_parameters: null
 logging:
   project: fewsteprl-wan21
-  run_name: wan-grpo-32gpu
+  run_name: fewstepgrpo
   entity: ''
   tags:
   - wan2.1
@@ -121,7 +121,6 @@ logging:
   - grpo
   - sde
   - x0-form
-  - 32gpu
   enabled: true
 eval:
   enabled: true

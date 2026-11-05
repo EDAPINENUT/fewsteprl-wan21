@@ -107,7 +107,7 @@ distributed:
   ddp_find_unused_parameters: null
 logging:
   project: fewsteprl-wan21
-  run_name: wan-awm-32gpu
+  run_name: meanflowawm
   entity: ''
   tags:
   - wan2.1
@@ -119,7 +119,6 @@ logging:
   - rpd
   - awm
   - x0-form
-  - 32gpu
   enabled: true
 eval:
   enabled: true
