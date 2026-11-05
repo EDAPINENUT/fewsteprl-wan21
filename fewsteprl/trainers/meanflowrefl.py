@@ -896,7 +896,7 @@ class MeanFlowReFLTrainer(OPSDGradMixin, GeneralRLTrainer):
             if not bool(cfg.opsd_enabled):
                 raise ValueError(
                     f"{type(self).__name__} requires fewstep_rl.opsd_enabled=true. "
-                    "With it off no reward-gradient targets are built and this arm "
+                    "With it off no reward-gradient targets are built and this trial "
                     "has nothing to fit; run --trainer meanflow_nft instead."
                 )
             missing = [k for k in self._OPSD_KEYS if sample_pack.get(k) is None]

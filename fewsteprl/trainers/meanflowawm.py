@@ -152,7 +152,7 @@ class MeanFlowAWMTrainer(GeneralRLTrainer):
 
         ``sigma = t`` (per-sample, passed in the ``beta`` slot). Since
         ``x_0_pred_v - x_0_rwd == t * (v_tgt - v_theta)``, the ``t**2`` cancels and
-        the gradient is t-independent; ``fewstep_rl.beta`` is unused on this arm.
+        the gradient is t-independent; ``fewstep_rl.beta`` is unused on this trial.
 
         The mse is a spatial mean, so this is the per-dimension log-ratio (the
         joint ratio would overflow), which is why ``clip_range`` is small (1e-3).

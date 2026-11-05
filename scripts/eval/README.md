@@ -13,7 +13,7 @@ scripts/eval/
   vbench_score.py  --sample_dir ... --gpus ...    -> vbench_info/{dim}_eval_results.json + vbench_summary.json
   setup_vbench_env.sh                             fixes for the separate VBench scoring env
   eval_ckpt.sh     <target> [gpus]                sample + score one checkpoint
-  eval_all.sh      [gpus] [targets...]            base + every checkpoints/<arm>, then collect
+  eval_all.sh      [gpus] [targets...]            base + every checkpoints/<trial>, then collect
   collect.py       [--out_root outputs/eval]      -> outputs/eval/summary.{csv,md}
 ```
 
@@ -54,7 +54,7 @@ layout the code expects (`WITH_VBENCH=0` skips the VBench weights).
 | what | source | local path |
 |---|---|---|
 | AnyFlow-Wan2.1-T2V-1.3B (policy base, non-commercial license) | [nvidia/AnyFlow-Wan2.1-T2V-1.3B-Diffusers](https://huggingface.co/nvidia/AnyFlow-Wan2.1-T2V-1.3B-Diffusers) | `models/AnyFlow-Wan2.1-T2V-1.3B-Diffusers/` |
-| Stage-3 checkpoints | Hugging Face (coming soon) | `checkpoints/<arm>/checkpoint-250/generator_ema.pt` |
+| Stage-3 checkpoints | Hugging Face (coming soon) | `checkpoints/<trial>/checkpoint-250/generator_ema.pt` |
 | **hpsv3_general / hpsv3_percentile** | [MizzenAI/HPSv3](https://huggingface.co/MizzenAI/HPSv3) `HPSv3.safetensors` on [Qwen/Qwen2-VL-7B-Instruct](https://huggingface.co/Qwen/Qwen2-VL-7B-Instruct) | `models/hf_cache/` |
 | **videoalign_mq / videoalign_ta** | [KlingTeam/VideoReward](https://huggingface.co/KlingTeam/VideoReward) on [Qwen/Qwen2-VL-2B-Instruct](https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct); code from [ModelTC/VideoAlign](https://github.com/ModelTC/VideoAlign) @ `aba26b65` | `models/VideoReward/`, `models/hf_cache/`, `third_party/VideoAlign/` (vendored) |
 | VBench tokenizer | [bert-base-uncased](https://huggingface.co/bert-base-uncased) (GRiT, tag2text) | `models/hf_cache/` |
@@ -87,7 +87,7 @@ files.
 Sampling matches the eval block of every training config: the AnyFlow
 pipeline with the Stage-3 LoRA (`mode: meanflow_nft`), **4-step flow map,
 CFG-free, 81 frames at 480x832, 16 fps**. `base` uses `mode: anyflow`, the
-pre-RL model every arm starts from. Each video's seed is `seed + prompt index`,
+pre-RL model every trial starts from. Each video's seed is `seed + prompt index`,
 so results do not depend on the number of GPUs.
 
 | prompt set | videos | scored with |

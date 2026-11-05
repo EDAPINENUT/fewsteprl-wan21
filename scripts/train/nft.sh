@@ -21,7 +21,7 @@
 
 set -euo pipefail
 
-ARM='nft'
+TRIAL='nft'
 TRAINER='nft_rl'
 PORT=29712
 
@@ -31,9 +31,9 @@ cd "${REPO}"
 NGPU="${1:-8}"; shift || true
 
 export TRAINER_KEY="${TRAINER}"
-export CONFIG="scripts/train/configs/${ARM}.yaml"
+export CONFIG="scripts/train/configs/${TRIAL}.yaml"
 export NNODES="${NNODES:-4}"
 export MASTER_PORT="${MASTER_PORT:-${PORT}}"
 
-echo "[${ARM}] trainer=${TRAINER} config=${CONFIG} nodes=${NNODES} gpus/node=${NGPU} port=${MASTER_PORT}"
+echo "[${TRIAL}] trainer=${TRAINER} config=${CONFIG} nodes=${NNODES} gpus/node=${NGPU} port=${MASTER_PORT}"
 exec bash scripts/train/_launcher.sh "${NGPU}" "$@"

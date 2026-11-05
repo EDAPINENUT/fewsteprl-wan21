@@ -588,7 +588,7 @@ class FewstepRLTrainConfig:
                 "rollout exists to supply replayable transitions, and without "
                 "reuse_x_t the intermediate states are discarded, so this costs "
                 "the extra noise draws and buys nothing. Set reuse_x_t=true "
-                "(the GRPO arm needs both) or go back to 'ode'."
+                "(the GRPO trial needs both) or go back to 'ode'."
             )
         if self.use_ref_v_model:
             raise ValueError(
@@ -606,7 +606,7 @@ class FewstepRLTrainConfig:
                 "in the OPSD loss's differentiable channel) but "
                 "opsd_enabled=false. Drop disable_cd, or use "
                 "diffusion_ratio=1.0 if you want an r == t run without the "
-                "central difference on a non-OPSD arm."
+                "central difference on a non-OPSD trial."
             )
         if self.opsd_enabled:
             if self.opsd_rho <= 0:

@@ -122,7 +122,7 @@ class GeneralRLTrainer(BaseTrainer):
 
     #: Dtype the central-difference endpoints are cast to before subtraction in
     #: :meth:`_central_diff_dudt` (bf16 loses most of the quotient's precision).
-    #: Hold it fixed across arms being compared. ``None`` keeps the network dtype.
+    #: Hold it fixed across trials being compared. ``None`` keeps the network dtype.
     _cd_out_dtype: Optional[torch.dtype] = None
 
     #: Logged every step on every rank as ``rl_diagnostic/*``. The key set must be
@@ -136,7 +136,7 @@ class GeneralRLTrainer(BaseTrainer):
     #: Logged every step on every rank as ``rl_loss/*``; same rank-uniformity
     #: requirement. ``_run_rl_epoch`` drops keys that are not registered here.
     #: The decoupled loss differs from the fused one by a cross term, so these are
-    #: only comparable within an arm (see :meth:`decoupled_rl_loss`).
+    #: only comparable within a trial (see :meth:`decoupled_rl_loss`).
     _EXTRA_LOSS_KEYS: tuple[str, ...] = (
         "self_regression_loss",       # W * mean_sp[(P - x_anchor_1)^2]
         "reward_augmentation_loss",   # W * mean_sp[norm_grad^2]
@@ -1111,7 +1111,7 @@ class GeneralRLTrainer(BaseTrainer):
         S term would cancel). The v-mode reference is unavailable on Wan (see
         :meth:`_kl_usage`).
         """
-        # Pre-seeded so the key set is identical on every rank and arm
+        # Pre-seeded so the key set is identical on every rank and trial
         # (``_reduce_metrics`` hangs on mismatched keys).
         info: dict[str, float] = {
             "loss_kl_unweighted": 0.0,
@@ -2542,7 +2542,7 @@ class GeneralRLTrainer(BaseTrainer):
                         return_intermediate=bool(getattr(cfg, "reuse_x_t", False)),
                     )
                 # Aux epoch first: _rl_loss reads aux_v_model fitted to this pack.
-                # Returns ``{}`` on arms without an aux model.
+                # Returns ``{}`` on trials without an aux model.
                 aux_metrics = self._run_aux_epoch(sample_pack)
                 metrics = self._run_rl_epoch(sample_pack, preview)
                 for section, vals in (aux_metrics or {}).items():
@@ -2642,7 +2642,7 @@ class GeneralRLTrainer(BaseTrainer):
         if saved_key is not None and saved_key != self.TRAINER_KEY:
             raise ValueError(
                 f"Checkpoint was written by trainer {saved_key!r} but is being "
-                f"resumed into {self.TRAINER_KEY!r}. The two arms have different "
+                f"resumed into {self.TRAINER_KEY!r}. The two trials have different "
                 "loss algebra; resuming across them silently mixes runs."
             )
         self._rl_epoch = int(extra.get("rl_epoch", 0))

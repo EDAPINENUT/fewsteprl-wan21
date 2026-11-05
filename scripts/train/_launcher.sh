@@ -1,6 +1,6 @@
 #!/bin/bash
-# Shared launcher for every Wan2.1 arm. Not meant to be called directly: the
-# scripts/train/<arm>.sh wrappers export CONFIG / TRAINER_KEY / NNODES and exec
+# Shared launcher for every Wan2.1 trial. Not meant to be called directly: the
+# scripts/train/<trial>.sh wrappers export CONFIG / TRAINER_KEY / NNODES and exec
 # this file. Run the same command on every node with NODE_RANK=0..NNODES-1 and
 # MASTER_ADDR set to the rank-0 host.
 #
@@ -26,8 +26,8 @@ set --
 
 fail() { echo "ERROR: $*" >&2; exit 1; }
 
-[[ -n "${CONFIG:-}" ]] || fail "CONFIG is not set; launch through scripts/train/<arm>.sh"
-[[ -n "${TRAINER_KEY:-}" ]] || fail "TRAINER_KEY is not set; launch through scripts/train/<arm>.sh"
+[[ -n "${CONFIG:-}" ]] || fail "CONFIG is not set; launch through scripts/train/<trial>.sh"
+[[ -n "${TRAINER_KEY:-}" ]] || fail "TRAINER_KEY is not set; launch through scripts/train/<trial>.sh"
 
 NNODES="${NNODES:-1}"
 [[ "${NNODES}" =~ ^[1-9][0-9]*$ ]] || fail "NNODES must be a positive integer; got ${NNODES}."

@@ -1,7 +1,7 @@
 """FewStepRL training entry point for Wan2.1-T2V-1.3B (AnyFlow flow map).
 
 Every trainer reads the ``fewstep_rl`` config section and is launched by one
-of the ``scripts/train/<arm>.sh`` wrappers, which pin the trainer key:
+of the ``scripts/train/<trial>.sh`` wrappers, which pin the trainer key:
 
 - ``meanflow_nft``: MeanFlowNFT (self-induced anchor).
 - ``nft_rl``: S-term ablation of MeanFlowNFT (no central difference).
@@ -56,7 +56,7 @@ def parse_args() -> argparse.Namespace:
         type=str,
         required=True,
         choices=list(TRAINER_REGISTRY.keys()),
-        help="Trainer key (pinned by scripts/train/<arm>.sh)",
+        help="Trainer key (pinned by scripts/train/<trial>.sh)",
     )
     parser.add_argument(
         "--override",

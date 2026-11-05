@@ -86,7 +86,7 @@ class DMDAWMTrainer(MeanFlowAWMTrainer):
                 "aux_v_model, but fewstep_rl.aux_v_enabled=false, so setup_models "
                 "would never build that model and the first policy step would "
                 "fail -- after a full rollout and reward-scoring phase. Set "
-                "fewstep_rl.aux_v_enabled=true, or use the meanflowawm_rl arm, "
+                "fewstep_rl.aux_v_enabled=true, or use the meanflowawm_rl trial, "
                 "which centers the reward term on the policy's own prediction."
             )
         super().setup_models()
@@ -150,7 +150,7 @@ class DMDAWMTrainer(MeanFlowAWMTrainer):
                 f"{type(self).__name__} uses the aux marginal as the reward center, but the aux probe "
                 "center stash is empty -- reward_augmentation ran outside the "
                 "_rl_loss block that fills it. Silently falling back to "
-                "x_pred.detach() here would turn the arm into plain AWM without "
+                "x_pred.detach() here would turn the trial into plain AWM without "
                 "changing one logged number."
             )
         if center.shape != x_pred.shape:

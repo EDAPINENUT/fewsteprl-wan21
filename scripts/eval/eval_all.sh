@@ -4,7 +4,7 @@
 # Usage:
 #   bash scripts/eval/eval_all.sh [NUM_GPUS] [TARGET ...]
 #
-# With no TARGETs: base + every checkpoints/<arm>. Honours the same environment
+# With no TARGETs: base + every checkpoints/<trial>. Honours the same environment
 # as eval_ckpt.sh (VBENCH, VBENCH_PYTHON, MAX_PROMPTS, FORCE, OUT_ROOT).
 # Finished sample / score sets are skipped, so the script can be re-run after
 # an interruption.

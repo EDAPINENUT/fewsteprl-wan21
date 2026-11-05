@@ -1,10 +1,10 @@
 # Offline sampling protocol, aligned with the training-time eval block of every
-# scripts/train/configs/<arm>.yaml: AnyFlow flow map, 4 steps, CFG-free,
+# scripts/train/configs/<trial>.yaml: AnyFlow flow map, 4 steps, CFG-free,
 # 81 frames at 480x832, 16 fps, max_sequence_length 512.
 #
 # scripts/eval/sample.sh fills in mode / meanflow_nft_path / prompt_file /
 # output_dir / seed per run. mode: meanflow_nft = AnyFlow + a Stage-3 LoRA;
-# mode: anyflow = the pre-RL model (step 0 of every arm).
+# mode: anyflow = the pre-RL model (step 0 of every trial).
 mode: meanflow_nft
 normal_pretrained_path: Wan-AI/Wan2.1-T2V-1.3B-Diffusers
 anyflow_pretrained_path: models/AnyFlow-Wan2.1-T2V-1.3B-Diffusers

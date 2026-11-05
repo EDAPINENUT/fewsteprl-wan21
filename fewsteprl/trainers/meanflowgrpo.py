@@ -290,7 +290,7 @@ class MeanFlowGRPOTrainer(GeneralRLTrainer):
                     # the base's ``j_idx`` RNG slot.
                     s_b = self._draw_training_s_given_t(
                         t_b,
-                        state={},   # this arm carries no per-inner-epoch draw state
+                        state={},   # this trial carries no per-inner-epoch draw state
                         chunk_start=start,
                         chunk_end=end,
                         j_idx=k,
