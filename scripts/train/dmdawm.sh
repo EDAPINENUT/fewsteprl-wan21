@@ -10,7 +10,7 @@
 #   config     : scripts/train/configs/dmdawm.yaml
 #   trainer    : dmdawm_rl
 #   released   : checkpoints/dmdawm/checkpoint-250/generator_ema.pt
-#   default    : 6 nodes x 8 GPUs = 48 GPUs (the released run)
+#   default    : 4 nodes x 8 GPUs = 32 GPUs (the released run)
 #
 # Usage (run on every node; NODE_RANK=0..NNODES-1, MASTER_ADDR=<rank-0 host>):
 #   NODE_RANK=0 MASTER_ADDR=10.0.0.1 bash scripts/train/dmdawm.sh [GPUS_PER_NODE] [OVERRIDES...]
@@ -33,7 +33,7 @@ NGPU="${1:-8}"; shift || true
 
 export TRAINER_KEY="${TRAINER}"
 export CONFIG="scripts/train/configs/${TRIAL}.yaml"
-export NNODES="${NNODES:-6}"
+export NNODES="${NNODES:-4}"
 export MASTER_PORT="${MASTER_PORT:-${PORT}}"
 
 echo "[${TRIAL}] trainer=${TRAINER} config=${CONFIG} nodes=${NNODES} gpus/node=${NGPU} port=${MASTER_PORT}"

@@ -72,10 +72,10 @@ released checkpoint `checkpoints/<name>/` (see
 |---|---|---|---|
 | `meanflownft` | `meanflow_nft` | MeanFlowNFT: self-induced anchor with the central-difference S-term, decoupled NFT loss | 32 |
 | `dmdnft` | `dmdnft_rl` | DMD-NFT: anchor velocity from an online-trained auxiliary v-predictor | 32 |
-| `dmdawm` | `dmdawm_rl` | DMD-AWM: AWM ratio without central difference + aux v-predictor baseline | 48 |
+| `dmdawm` | `dmdawm_rl` | DMD-AWM: AWM ratio without central difference + aux v-predictor baseline | 32 |
 | `fewstepgrpo` | `meanflowgrpo_rl` | MeanFlowGRPO: flow-GRPO ratio on replayed SDE rollout transitions | 32 |
 | `meanflowawm` | `meanflowawm_rl` | MeanFlowAWM: advantage-weighted x0 matching with a PPO trust region | 32 |
-| `meanflowopsd` | `meanflowopsd_rl` | MeanFlow-OPSD (v-form), reward direction from differentiable HPSv3 | 40 |
+| `meanflowopsd` | `meanflowopsd_rl` | MeanFlow-OPSD (v-form), reward direction from differentiable HPSv3 | 48 |
 | `reflmx` | `meanflowrefl_rl` | the ReFL special case of few-step OPSD (ascent square only, mixed reward) | 48 |
 | `nft` | `nft_rl` | S-term ablation of MeanFlowNFT: average velocity used as the instantaneous one, no central difference (no released checkpoint) | 32 |
 
@@ -131,8 +131,8 @@ NODE_RANK=1 MASTER_ADDR=10.0.0.1 bash scripts/train/meanflownft.sh 8
 NNODES=1 bash scripts/train/dmdawm.sh 8 fewstep_rl.num_epochs=2
 ```
 
-Each launcher defaults `NNODES` to the released run (4 nodes = 32 GPUs; 5 for
-`meanflowopsd`, 6 for `dmdawm` and `reflmx`). Extra arguments are `key=value`
+Each launcher defaults `NNODES` to the released run (4 nodes = 32 GPUs; 6 nodes
+= 48 GPUs for `meanflowopsd` and `reflmx`). Extra arguments are `key=value`
 config overrides. `train.batch_size * world_size` must be divisible by
 `fewstep_rl.num_image_per_prompt` (2 x 32 = 64 = 4 prompts x 16 videos), which
 the launcher checks. Sharding is HSDP (shard within a node, replicate across
