@@ -4,7 +4,11 @@
 
 ### Fine-tuning Few-step Diffusion Models with Reinforcement Learning
 
-Haitao Lin, Minsi Ren, Yang Li, Xingtong Ge, Zheyuan Hu, Peiyan Hu, Zhiming Ma, Tailin Wu
+Haitao Lin<sup>1,\*,†</sup>, Minsi Ren<sup>2,\*</sup>, Yang Li<sup>1,†</sup>, Xingtong Ge<sup>1</sup>, Zheyuan Hu<sup>1</sup>, Peiyan Hu<sup>2,3</sup>, Tailin Wu<sup>2,‡</sup>
+
+<sup>1</sup>Tencent Hunyuan · <sup>2</sup>Westlake University · <sup>3</sup>University of Chinese Academy of Sciences
+
+<sub><sup>\*</sup>Equal contribution · <sup>†</sup>Project leader · <sup>‡</sup>Corresponding author: wutailin@westlake.edu.cn</sub>
 
 **Video (Wan2.1-T2V-1.3B) code** · image code: [fewsteprl-sd35](https://github.com/EDAPINENUT/fewsteprl-sd35) · [project page](https://edapinenut.github.io/fewsteprl.page/)
 
