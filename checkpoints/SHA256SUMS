@@ -1,0 +1,7 @@
+197183dcd3b9545699eb696d88892a70533c3aaebc2a08a419f9bfcbfd2f2751  ./dmdawm/checkpoint-250/generator_ema.pt
+99f0a741b62984c5af8f62b9aad691f5746f7a18f1b949b9fff2982e8483646f  ./dmdnft/checkpoint-250/generator_ema.pt
+194a209446707341da7e8681a7f878c9fafa8e83fc67d46feb472fca6b2217e3  ./fewstepgrpo/checkpoint-250/generator_ema.pt
+2ccb27d70c013da89326306ff3b07a549077f63cf0e32f3c929ddfb0eb0d7f2f  ./meanflowawm/checkpoint-250/generator_ema.pt
+dc6f83d9e48ea225a5839c383fa11c4310a3c402301b5d0c1598e91d646132ce  ./meanflownft/checkpoint-250/generator_ema.pt
+cfef46a2c4822254c8bc33cf84e5b7b51635f452c5999063e6814d861909c7bc  ./meanflowopsd/checkpoint-250/generator_ema.pt
+9539170417003f5eca020e2a01534b8a0df7181996c3e1f47ffd06acbc2ff51a  ./reflmx/checkpoint-250/generator_ema.pt

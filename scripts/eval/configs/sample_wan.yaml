@@ -1,0 +1,38 @@
+# Offline sampling protocol, aligned with the training-time eval block of every
+# scripts/train/configs/<arm>.yaml: AnyFlow flow map, 4 steps, CFG-free,
+# 81 frames at 480x832, 16 fps, max_sequence_length 512.
+#
+# scripts/eval/sample.sh fills in mode / meanflow_nft_path / prompt_file /
+# output_dir / seed per run. mode: meanflow_nft = AnyFlow + a Stage-3 LoRA;
+# mode: anyflow = the pre-RL model (step 0 of every arm).
+mode: meanflow_nft
+normal_pretrained_path: Wan-AI/Wan2.1-T2V-1.3B-Diffusers
+anyflow_pretrained_path: models/AnyFlow-Wan2.1-T2V-1.3B-Diffusers
+meanflow_nft_path: ''
+dtype: bf16
+num_steps: 4
+normal_num_steps: 50
+guidance_scale: 1.0
+normal_guidance_scale: 5.0
+negative_prompt: ''
+num_frames: 81
+height: 480
+width: 832
+fps: 16
+max_sequence_length: 512
+# Per-video seed is seed + prompt index, independent of the number of GPUs.
+seed: 12345
+batch_size: 1
+prompts: []
+prompt_file: dataset/wan_dancegrpo/test.txt
+max_prompts: 0
+output_dir: ./outputs/eval/unset
+lora_rank: 32
+lora_alpha: 64
+lora_target_modules:
+- to_q
+- to_k
+- to_v
+- to_out.0
+- net.0.proj
+- net.2

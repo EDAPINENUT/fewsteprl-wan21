@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Run outputs (training runs, eval samples, wandb)
+outputs/
+wandb/
+inference_outputs/
+
+# Downloaded weights / HF cache / VBench checkpoints (download_scripts/).
+# Leading slash: an unanchored `models/` would also match fewsteprl/models/.
+/models/
+
+# Logs
+*.log
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
