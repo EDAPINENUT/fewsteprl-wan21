@@ -32,14 +32,14 @@ training objective, so it does not separate quality gains from reward hacking.
 
 | trial | trainer | mean | HPSv3-G | HPSv3-P | MQ (raw) | TA (raw) |
 |---|---|---|---|---|---|---|
-| step 0 (AnyFlow, pre-RL) | -- | 16.54 | 6.42 | 9.43 | 2.64 | 1.85 |
-| meanflownft | `meanflow_nft` | 16.80 | 6.53 | 9.51 | 2.76 | 1.80 |
-| dmdnft | `dmdnft_rl` | 17.93 | 7.01 | 10.01 | 3.06 | 1.68 |
-| dmdawm | `dmdawm_rl` | 16.78 | 6.51 | 9.53 | 2.74 | 1.82 |
-| fewstepgrpo | `meanflowgrpo_rl` | 15.89 | 6.24 | 9.38 | 2.40 | 1.23 |
-| meanflowawm | `meanflowawm_rl` | 16.66 | 6.49 | 9.46 | 2.68 | 1.84 |
-| meanflowopsd | `meanflowopsd_rl` | 16.26 | 6.30 | 9.32 | 2.54 | 1.91 |
-| reflmx | `meanflowrefl_rl` | 16.46 | 6.39 | 9.38 | 2.61 | 1.89 |
+| step 0 (AnyFlow, pre-RL) | -- | 16.540 | 6.420 | 9.430 | 2.640 | 1.850 |
+| meanflownft | `meanflow_nft` | 16.800 | 6.530 | 9.510 | 2.760 | 1.800 |
+| dmdnft | `dmdnft_rl` | 17.930 | 7.010 | 10.010 | 3.060 | 1.680 |
+| dmdawm | `dmdawm_rl` | 16.780 | 6.510 | 9.530 | 2.740 | 1.820 |
+| fewstepgrpo | `meanflowgrpo_rl` | 15.890 | 6.240 | 9.380 | 2.400 | 1.230 |
+| meanflowawm | `meanflowawm_rl` | 16.660 | 6.490 | 9.460 | 2.680 | 1.840 |
+| meanflowopsd | `meanflowopsd_rl` | 16.260 | 6.300 | 9.320 | 2.540 | 1.910 |
+| reflmx | `meanflowrefl_rl` | 16.460 | 6.390 | 9.380 | 2.610 | 1.890 |
 
 ## VBench (held out, checkpoint-250; paper Tab. 8 and Tab. S2)
 
@@ -49,14 +49,14 @@ weights (eight dimensions are rescaled before aggregation, see
 
 | trial | overall | quality | semantic | dynamic_degree |
 |---|---|---|---|---|
-| step 0 (AnyFlow, pre-RL) | 83.68 | 85.36 | 76.98 | -- |
-| meanflownft | 83.62 | 85.34 | 76.75 | 58.06 |
-| dmdnft | 83.38 | 85.07 | 76.63 | 53.33 |
-| dmdawm | 83.64 | 85.35 | 76.76 | 58.61 |
-| fewstepgrpo | 83.62 | 85.27 | 76.98 | 59.62 |
-| meanflowawm | 83.70 | 85.36 | 77.04 | 58.89 |
-| meanflowopsd | 83.60 | 85.37 | 76.53 | 59.44 |
-| reflmx | 83.69 | 85.40 | 76.85 | 59.17 |
+| step 0 (AnyFlow, pre-RL) | 83.680 | 85.360 | 76.980 | -- |
+| meanflownft | 83.620 | 85.340 | 76.750 | 58.060 |
+| dmdnft | 83.380 | 85.070 | 76.630 | 53.330 |
+| dmdawm | 83.640 | 85.350 | 76.760 | 58.610 |
+| fewstepgrpo | 83.620 | 85.270 | 76.980 | 59.620 |
+| meanflowawm | 83.700 | 85.360 | 77.040 | 58.890 |
+| meanflowopsd | 83.600 | 85.370 | 76.530 | 59.440 |
+| reflmx | 83.690 | 85.400 | 76.850 | 59.170 |
 
 The two benchmarks disagree: VBench overall spans only 0.32 points across the
 trials, while the training reward spans 2.04 (paper Tab. S2). `dmdnft` has the
