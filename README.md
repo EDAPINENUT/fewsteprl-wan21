@@ -10,7 +10,9 @@ Haitao Lin<sup>1,\*,†</sup>, Minsi Ren<sup>2,\*</sup>, Yang Li<sup>1,†</sup>
 
 <sub><sup>\*</sup>Equal contribution · <sup>†</sup>Project leader · <sup>‡</sup>Corresponding author: wutailin@westlake.edu.cn</sub>
 
-**Video (Wan2.1-T2V-1.3B) code** · image code: [fewsteprl-sd35](https://github.com/EDAPINENUT/fewsteprl-sd35) · [project page](https://edapinenut.github.io/fewsteprl.page/)
+[![arXiv](https://img.shields.io/badge/arXiv-2611.08240-b31b1b.svg)](https://arxiv.org/abs/2611.08240) [![Project page](https://img.shields.io/badge/Project-Page-1e4a8f.svg)](https://edapinenut.github.io/fewsteprl.page/) [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Checkpoints-ffd21e.svg)](https://huggingface.co/Delcher/fewsteprl-wan21)
+
+**Video (Wan2.1-T2V-1.3B) code** · image code: [fewsteprl-sd35](https://github.com/EDAPINENUT/fewsteprl-sd35) · checkpoints: [🤗 Delcher/fewsteprl-wan21](https://huggingface.co/Delcher/fewsteprl-wan21)
 
 <a href="assets/teaser.mp4"><img src="assets/teaser.webp" width="100%" alt="4-step FewStepRL videos"></a>
 
@@ -95,7 +97,7 @@ third_party/VideoAlign/  vendored VideoAlign inference code (MIT) for the MQ / T
 dataset/                 wan_dancegrpo prompts (train / 256 test), VBench prompt metadata
 scripts/train/           <name>.sh launchers, shared _launcher.sh, configs/<name>.yaml
 scripts/eval/            sampling, reward scoring, VBench (see scripts/eval/README.md)
-checkpoints/             configs of the released LoRAs (weights: coming soon on Hugging Face)
+checkpoints/             configs of the released LoRAs (weights on Hugging Face)
 download_scripts/        download_assets.sh: AnyFlow-Wan, reward models, VBench weights
 models/                  (created by download_assets.sh, not tracked)
 ```
@@ -108,6 +110,7 @@ pip install hpsv3==1.0.0 --no-deps
 pip install trl==0.12.2 --no-deps
 pip install vbench==0.1.5 --no-deps
 bash download_scripts/download_assets.sh       # ~82 GB; WITH_VBENCH=0 for training only (~69 GB)
+hf download Delcher/fewsteprl-wan21 --local-dir checkpoints --include "*.pt"   # released checkpoints
 ```
 
 The AnyFlow-Wan license restricts the model and derivative weights to
@@ -163,6 +166,18 @@ Built on [AnyFlow](https://github.com/NVlabs/AnyFlow),
 [VBench](https://github.com/Vchitect/VBench),
 [Diffusers](https://github.com/huggingface/diffusers) and
 [PEFT](https://github.com/huggingface/peft).
+
+## Citation
+
+```bibtex
+@article{lin2026fewsteprl,
+  title   = {FewStepRL: Fine-tuning Few-step Diffusion Models with Reinforcement Learning},
+  author  = {Lin, Haitao and Ren, Minsi and Li, Yang and Ge, Xingtong and
+             Hu, Zheyuan and Hu, Peiyan and Wu, Tailin},
+  journal = {arXiv preprint arXiv:2611.08240},
+  year    = {2026}
+}
+```
 
 ## License
 

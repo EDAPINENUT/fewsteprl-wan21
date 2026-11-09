@@ -11,9 +11,15 @@ checkpoints/<trial>/
   checkpoint-250/generator_ema.pt     # EMA generator: LoRA A/B + condition_embedder.delta_embedder
 ```
 
-The `generator_ema.pt` weights are not in this repository; they will be
-released on Hugging Face soon. `generator_ema.pt` is a plain tensor state
-dict. It is applied on top of the full
+The `generator_ema.pt` weights are on Hugging Face,
+[Delcher/fewsteprl-wan21](https://huggingface.co/Delcher/fewsteprl-wan21). Download and verify them with
+
+```bash
+hf download Delcher/fewsteprl-wan21 --local-dir checkpoints --include "*.pt"
+cd checkpoints && shasum -a 256 -c SHA256SUMS
+```
+
+`generator_ema.pt` is a plain tensor state dict. It is applied on top of the full
 [nvidia/AnyFlow-Wan2.1-T2V-1.3B-Diffusers](https://huggingface.co/nvidia/AnyFlow-Wan2.1-T2V-1.3B-Diffusers)
 pipeline: `inference.py` with `mode: meanflow_nft` and
 `meanflow_nft_path=<generator_ema.pt>` does this, and `scripts/eval/sample.sh

@@ -54,7 +54,7 @@ layout the code expects (`WITH_VBENCH=0` skips the VBench weights).
 | what | source | local path |
 |---|---|---|
 | AnyFlow-Wan2.1-T2V-1.3B (policy base, non-commercial license) | [nvidia/AnyFlow-Wan2.1-T2V-1.3B-Diffusers](https://huggingface.co/nvidia/AnyFlow-Wan2.1-T2V-1.3B-Diffusers) | `models/AnyFlow-Wan2.1-T2V-1.3B-Diffusers/` |
-| Stage-3 checkpoints | Hugging Face (coming soon) | `checkpoints/<trial>/checkpoint-250/generator_ema.pt` |
+| Stage-3 checkpoints | [Delcher/fewsteprl-wan21](https://huggingface.co/Delcher/fewsteprl-wan21) | `checkpoints/<trial>/checkpoint-250/generator_ema.pt` |
 | **hpsv3_general / hpsv3_percentile** | [MizzenAI/HPSv3](https://huggingface.co/MizzenAI/HPSv3) `HPSv3.safetensors` on [Qwen/Qwen2-VL-7B-Instruct](https://huggingface.co/Qwen/Qwen2-VL-7B-Instruct) | `models/hf_cache/` |
 | **videoalign_mq / videoalign_ta** | [KlingTeam/VideoReward](https://huggingface.co/KlingTeam/VideoReward) on [Qwen/Qwen2-VL-2B-Instruct](https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct); code from [ModelTC/VideoAlign](https://github.com/ModelTC/VideoAlign) @ `aba26b65` | `models/VideoReward/`, `models/hf_cache/`, `third_party/VideoAlign/` (vendored) |
 | VBench tokenizer | [bert-base-uncased](https://huggingface.co/bert-base-uncased) (GRiT, tag2text) | `models/hf_cache/` |
